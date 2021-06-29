@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Filmes Blueflix</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/pages/read_all.css">
+</head>
+<body>
+    
+    {% include 'header.html' %}
+
+    <!-- Incluir a tabela com a lista de todos os filmes -->
+    <div class="bloco">
+        <h2>Visualizar todos os registros</h2>
+    </div>
+    <div class="bloco">
+        <table class="tabela">
+            <tr class="tabela_header">
+                <!-- TH - Table Header: linha de índices da tabela -->
+                <td>ID</td>
+                <td>Nome</td>
+                <td>Imagem</td>
+                <td>Ações</td>
+            </tr>
+            <tbody>
+                <!-- Corpo da minha tabela: onde vão todos os meus dados da tabela -->
+                {% for filme in filmes %}
+                    <tr>
+                        <td>{{filme.id}}</td>
+                        <td>{{filme.nome}}</td>
+                        <td>
+                            <img src="{{filme.imagem_url}}" alt="{{filme.nome}}">
+                        </td>
+                        <td>
+                            <a href="/read/{{filme.id}}" class="botao">Visualizar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
